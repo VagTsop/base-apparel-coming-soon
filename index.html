@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base Apparel | Coming Soon</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon-32x32.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <div class="content">
+        <div class="content-wrapper">
+          <div style="display: flex; padding-left: 50px">
+            <img
+              style="text-align: left"
+              src="images/logo.svg"
+              alt="Base Apparel Logo"
+              class="logo"
+            />
+          </div>
+          <div class="hero-mobile"></div>
+
+          <div class="call-to-action">
+            <div>
+              <h1><span>We're</span><br />Coming Soon</h1>
+              <p>
+                Hello fellow shoppers! We're currently building our new fashion
+                store. Add your email below to stay up-to-date with
+                announcements and our launch deals.
+              </p>
+
+              <form id="email-form" novalidate>
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                  <img
+                    src="images/icon-error.svg"
+                    alt="error icon"
+                    class="error-icon"
+                  />
+                  <button type="submit">
+                    <img src="images/icon-arrow.svg" alt="submit arrow" />
+                  </button>
+                </div>
+                <small class="error-text">Please provide a valid email</small>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero"></div>
+    </main>
+
+    <script>
+      const form = document.getElementById("email-form");
+      const email = document.getElementById("email");
+      const errorIcon = document.querySelector(".error-icon");
+      const errorText = document.querySelector(".error-text");
+      const inputWrapper = document.querySelector(".input-wrapper"); // Add this
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailValue = email.value.trim();
+        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+        if (!emailValue || !emailRegex.test(emailValue)) {
+          email.classList.add("error");
+          inputWrapper.classList.add("error"); // Add red border
+          errorIcon.style.display = "inline";
+          errorText.style.display = "block";
+        } else {
+          email.classList.remove("error");
+          inputWrapper.classList.remove("error"); // Remove red border
+          errorIcon.style.display = "none";
+          errorText.style.display = "none";
+          alert("Thanks! You'll be notified.");
+          email.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
